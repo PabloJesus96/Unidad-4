@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from MovieWSService WSDL service -->
+
+  <service name="MovieWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.utng.edu.mx"/>
+      <parameter name="wsdlServiceElement" value="MovieWSService"/>
+      <parameter name="schemaQualified" value="http://ws.utng.edu.mx"/>
+      <parameter name="wsdlServicePort" value="MovieWS"/>
+      <parameter name="className" value="mx.edu.utng.ws.MovieWS"/>
+      <parameter name="wsdlPortType" value="MovieWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://ws.utng.edu.mx" xmlns:retNS="http://ws.utng.edu.mx" xmlns:rtns="http://ws.utng.edu.mx" name="getMovieById" qname="operNS:getMovieById" returnQName="retNS:getMovieByIdReturn" returnType="rtns:Movie" soapAction="">
+        <parameter xmlns:pns="http://ws.utng.edu.mx" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.utng.edu.mx" xmlns:retNS="http://ws.utng.edu.mx" xmlns:rtns="http://ws.utng.edu.mx" name="getMovies" qname="operNS:getMovies" returnQName="retNS:getMoviesReturn" returnType="rtns:Movie" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://ws.utng.edu.mx" xmlns:retNS="http://ws.utng.edu.mx" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addMovie" qname="operNS:addMovie" returnQName="retNS:addMovieReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://ws.utng.edu.mx" xmlns:tns="http://ws.utng.edu.mx" qname="pns:movie" type="tns:Movie"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.utng.edu.mx" xmlns:retNS="http://ws.utng.edu.mx" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="editMovie" qname="operNS:editMovie" returnQName="retNS:editMovieReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://ws.utng.edu.mx" xmlns:tns="http://ws.utng.edu.mx" qname="pns:movie" type="tns:Movie"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.utng.edu.mx" xmlns:retNS="http://ws.utng.edu.mx" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="removeMovie" qname="operNS:removeMovie" returnQName="retNS:removeMovieReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://ws.utng.edu.mx" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="editMovie getMovieById getMovies addMovie removeMovie"/>
+
+      <typeMapping xmlns:ns="http://ws.utng.edu.mx" qname="ns:Movie" type="java:mx.edu.utng.ws.Movie" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

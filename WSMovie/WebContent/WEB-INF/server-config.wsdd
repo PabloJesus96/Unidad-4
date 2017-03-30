@@ -1,0 +1,100 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="D:\projects\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\WSMovie\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="MovieWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="getMovieById" qname="ns1:getMovieById" returnQName="ns1:getMovieByIdReturn" returnType="ns1:Movie" soapAction="" xmlns:ns1="http://ws.utng.edu.mx" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns2:operation>
+  <ns1:operation name="getMovies" qname="ns2:getMovies" returnQName="ns2:getMoviesReturn" returnType="ns2:Movie" soapAction="" xmlns:ns2="http://ws.utng.edu.mx"/>
+  <ns1:operation name="addMovie" qname="ns3:addMovie" returnQName="ns3:addMovieReturn" returnType="xsd:int" soapAction="" xmlns:ns3="http://ws.utng.edu.mx" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:movie" type="ns3:Movie"/>
+  </ns1:operation>
+  <ns1:operation name="editMovie" qname="ns4:editMovie" returnQName="ns4:editMovieReturn" returnType="xsd:int" soapAction="" xmlns:ns4="http://ws.utng.edu.mx" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:movie" type="ns4:Movie"/>
+  </ns1:operation>
+  <ns1:operation name="removeMovie" qname="ns5:removeMovie" returnQName="ns5:removeMovieReturn" returnType="xsd:int" soapAction="" xmlns:ns5="http://ws.utng.edu.mx" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:id" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="editMovie getMovieById getMovies addMovie removeMovie"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="MovieWS"/>
+  <ns1:parameter name="className" value="mx.edu.utng.ws.MovieWS"/>
+  <ns1:parameter name="wsdlServicePort" value="MovieWS"/>
+  <ns1:parameter name="schemaQualified" value="http://ws.utng.edu.mx"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://ws.utng.edu.mx"/>
+  <ns1:parameter name="wsdlServiceElement" value="MovieWSService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns6:Movie" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:mx.edu.utng.ws.Movie" xmlns:ns6="http://ws.utng.edu.mx"/>
+ </ns1:service>
+ <ns1:service name="DetailExamWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="getDetailExamById" qname="ns7:getDetailExamById" returnQName="ns7:getDetailExamByIdReturn" returnType="ns7:DetailExam" soapAction="" xmlns:ns7="http://ws.utng.edu.mx">
+   <ns1:parameter qname="ns7:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="removeDetailExam" qname="ns8:removeDetailExam" returnQName="ns8:removeDetailExamReturn" returnType="xsd:int" soapAction="" xmlns:ns8="http://ws.utng.edu.mx" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:id" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="addDetailExam" qname="ns9:addDetailExam" returnQName="ns9:addDetailExamReturn" returnType="xsd:int" soapAction="" xmlns:ns9="http://ws.utng.edu.mx" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:detailExam" type="ns9:DetailExam"/>
+  </ns1:operation>
+  <ns1:operation name="getDetailExams" qname="ns10:getDetailExams" returnQName="ns10:getDetailExamsReturn" returnType="ns10:DetailExam" soapAction="" xmlns:ns10="http://ws.utng.edu.mx"/>
+  <ns1:operation name="editDetailExam" qname="ns11:editDetailExam" returnQName="ns11:editDetailExamReturn" returnType="xsd:int" soapAction="" xmlns:ns11="http://ws.utng.edu.mx" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:detailExam" type="ns11:DetailExam"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="removeDetailExam getDetailExams addDetailExam editDetailExam getDetailExamById"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="DetailExamWS"/>
+  <ns1:parameter name="className" value="mx.edu.utng.ws.DetailExamWS"/>
+  <ns1:parameter name="wsdlServicePort" value="DetailExamWS"/>
+  <ns1:parameter name="schemaQualified" value="http://ws.utng.edu.mx"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://ws.utng.edu.mx"/>
+  <ns1:parameter name="wsdlServiceElement" value="DetailExamWSService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns12:DetailExam" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:mx.edu.utng.ws.DetailExam" xmlns:ns12="http://ws.utng.edu.mx"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

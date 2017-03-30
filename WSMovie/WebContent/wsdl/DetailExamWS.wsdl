@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.utng.edu.mx" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.utng.edu.mx" xmlns:intf="http://ws.utng.edu.mx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.utng.edu.mx" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getDetailExamById">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDetailExamByIdResponse">
+    <complexType>
+     <sequence>
+      <element name="getDetailExamByIdReturn" type="impl:DetailExam"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="DetailExam">
+    <sequence>
+     <element name="answer" nillable="true" type="xsd:string"/>
+     <element name="cveContent" nillable="true" type="xsd:string"/>
+     <element name="cveMatter" nillable="true" type="xsd:string"/>
+     <element name="cveQuestion" nillable="true" type="xsd:string"/>
+     <element name="cveResult" nillable="true" type="xsd:string"/>
+     <element name="examDepartament" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="reactive" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="removeDetailExam">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="removeDetailExamResponse">
+    <complexType>
+     <sequence>
+      <element name="removeDetailExamReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addDetailExam">
+    <complexType>
+     <sequence>
+      <element name="detailExam" type="impl:DetailExam"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addDetailExamResponse">
+    <complexType>
+     <sequence>
+      <element name="addDetailExamReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDetailExams">
+    <complexType/>
+   </element>
+   <element name="getDetailExamsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getDetailExamsReturn" type="impl:DetailExam"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="editDetailExam">
+    <complexType>
+     <sequence>
+      <element name="detailExam" type="impl:DetailExam"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="editDetailExamResponse">
+    <complexType>
+     <sequence>
+      <element name="editDetailExamReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getDetailExamsRequest">
+
+      <wsdl:part element="impl:getDetailExams" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDetailExamByIdRequest">
+
+      <wsdl:part element="impl:getDetailExamById" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDetailExamByIdResponse">
+
+      <wsdl:part element="impl:getDetailExamByIdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="removeDetailExamResponse">
+
+      <wsdl:part element="impl:removeDetailExamResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="editDetailExamRequest">
+
+      <wsdl:part element="impl:editDetailExam" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDetailExamsResponse">
+
+      <wsdl:part element="impl:getDetailExamsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addDetailExamResponse">
+
+      <wsdl:part element="impl:addDetailExamResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addDetailExamRequest">
+
+      <wsdl:part element="impl:addDetailExam" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="removeDetailExamRequest">
+
+      <wsdl:part element="impl:removeDetailExam" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="editDetailExamResponse">
+
+      <wsdl:part element="impl:editDetailExamResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="DetailExamWS">
+
+      <wsdl:operation name="getDetailExamById">
+
+         <wsdl:input message="impl:getDetailExamByIdRequest" name="getDetailExamByIdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getDetailExamByIdResponse" name="getDetailExamByIdResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="removeDetailExam">
+
+         <wsdl:input message="impl:removeDetailExamRequest" name="removeDetailExamRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:removeDetailExamResponse" name="removeDetailExamResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addDetailExam">
+
+         <wsdl:input message="impl:addDetailExamRequest" name="addDetailExamRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addDetailExamResponse" name="addDetailExamResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDetailExams">
+
+         <wsdl:input message="impl:getDetailExamsRequest" name="getDetailExamsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getDetailExamsResponse" name="getDetailExamsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="editDetailExam">
+
+         <wsdl:input message="impl:editDetailExamRequest" name="editDetailExamRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:editDetailExamResponse" name="editDetailExamResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="DetailExamWSSoapBinding" type="impl:DetailExamWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getDetailExamById">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDetailExamByIdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDetailExamByIdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="removeDetailExam">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="removeDetailExamRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="removeDetailExamResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addDetailExam">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addDetailExamRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addDetailExamResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDetailExams">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDetailExamsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDetailExamsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="editDetailExam">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="editDetailExamRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="editDetailExamResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="DetailExamWSService">
+
+      <wsdl:port binding="impl:DetailExamWSSoapBinding" name="DetailExamWS">
+
+         <wsdlsoap:address location="http://localhost:8080/WSMovie/services/DetailExamWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

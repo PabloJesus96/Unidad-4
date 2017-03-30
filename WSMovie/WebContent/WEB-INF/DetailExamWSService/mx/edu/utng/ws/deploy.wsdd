@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from DetailExamWSService WSDL service -->
+
+  <service name="DetailExamWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.utng.edu.mx"/>
+      <parameter name="wsdlServiceElement" value="DetailExamWSService"/>
+      <parameter name="schemaQualified" value="http://ws.utng.edu.mx"/>
+      <parameter name="wsdlServicePort" value="DetailExamWS"/>
+      <parameter name="className" value="mx.edu.utng.ws.DetailExamWS"/>
+      <parameter name="wsdlPortType" value="DetailExamWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://ws.utng.edu.mx" xmlns:retNS="http://ws.utng.edu.mx" xmlns:rtns="http://ws.utng.edu.mx" name="getDetailExamById" qname="operNS:getDetailExamById" returnQName="retNS:getDetailExamByIdReturn" returnType="rtns:DetailExam" soapAction="">
+        <parameter xmlns:pns="http://ws.utng.edu.mx" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.utng.edu.mx" xmlns:retNS="http://ws.utng.edu.mx" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="removeDetailExam" qname="operNS:removeDetailExam" returnQName="retNS:removeDetailExamReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://ws.utng.edu.mx" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.utng.edu.mx" xmlns:retNS="http://ws.utng.edu.mx" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addDetailExam" qname="operNS:addDetailExam" returnQName="retNS:addDetailExamReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://ws.utng.edu.mx" xmlns:tns="http://ws.utng.edu.mx" qname="pns:detailExam" type="tns:DetailExam"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.utng.edu.mx" xmlns:retNS="http://ws.utng.edu.mx" xmlns:rtns="http://ws.utng.edu.mx" name="getDetailExams" qname="operNS:getDetailExams" returnQName="retNS:getDetailExamsReturn" returnType="rtns:DetailExam" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://ws.utng.edu.mx" xmlns:retNS="http://ws.utng.edu.mx" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="editDetailExam" qname="operNS:editDetailExam" returnQName="retNS:editDetailExamReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://ws.utng.edu.mx" xmlns:tns="http://ws.utng.edu.mx" qname="pns:detailExam" type="tns:DetailExam"/>
+      </operation>
+      <parameter name="allowedMethods" value="removeDetailExam getDetailExams addDetailExam editDetailExam getDetailExamById"/>
+
+      <typeMapping xmlns:ns="http://ws.utng.edu.mx" qname="ns:DetailExam" type="java:mx.edu.utng.ws.DetailExam" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
