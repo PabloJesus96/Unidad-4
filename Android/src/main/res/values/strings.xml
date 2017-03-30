@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">WSMovie</string>
+    <string name="name_of_movie">Name of movie</string>
+    <string name="sinopsis">Sinopsis</string>
+    <string name="price">price</string>
+    <string name="type">type</string>
+    <string name="adults">Adults</string>
+    <string name="childrens">Childrens</string>
+    <string name="save">save</string>
+    <string name="list">list</string>
+    <string name="matter_key">Matter Key</string>
+    <string name="content_key">content Key</string>
+    <string name="result_key">Result Key</string>
+    <string name="question_key">Question Key</string>
+    <string name="answer">Answer</string>
+    <string name="exam_departament">Exam Departament</string>
+    <string name="reactive">Reactive</string>
+</resources>
